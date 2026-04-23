@@ -1,7 +1,8 @@
 /* --- VARIABILI COLORE E FONT --- */
 :root {
-    --primary-color: #356296; /* Blu scuro */
-    --accent-color: #5cc1db; /* Azzurro */
+    --primary-color: #356296;
+    --accent-color: #5cc1db;
+    --alert-color: #ff6b6b;
     --text-dark: #333333;
     --text-grey: #666666;
     --text-light: #f4f4f4;
@@ -9,10 +10,9 @@
     --bg-card: #ffffff;
     --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 
-
-    --font-titles: 'Orbitron', sans-serif;   /* Titoli */
+    --font-titles: 'Orbitron', sans-serif;
     --font-mid: "JetBrains Mono", monospace;
-    --font-body: 'Open Sans', sans-serif;    /* Paragrafi */
+    --font-body: 'Open Sans', sans-serif;
 }
 
 /* --- RESET E BASE --- */
@@ -24,9 +24,10 @@
 
 body {
     font-family: var(--font-body);
-    background-color: var(--bg-body);
     color: var(--text-dark);
     line-height: 1.6;
+    background-color: var(--bg-body);
+    width: 100%;
 }
 
 .container {
@@ -44,8 +45,6 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: none;
-    /* Rimosso l'ombra per un look più "float" */
 }
 
 .nav-container {
@@ -55,7 +54,6 @@ body {
     width: 100%;
 }
 
-/* Logo Placeholder */
 .logo #site-logo {
     height: 50px;
     width: auto;
@@ -98,7 +96,6 @@ body {
     text-decoration: underline;
     pointer-events: none;
     cursor: default;
-    transform: none !important; 
 }
 
 /* --- HAMBURGER MENU --- */
@@ -110,22 +107,6 @@ body {
     border: none;
 }
 
-/* --- ANIMAZIONE DA HAMBURGER A "X" --- */
-
-/* La barretta in alto ruota di 45 gradi verso il basso */
-.menu-toggle.is-active .bar:nth-child(1) {
-    transform: translateY(11px) rotate(45deg);
-}
-/* La barretta centrale sparisce (diventa invisibile e trasla) */
-.menu-toggle.is-active .bar:nth-child(2) {
-    opacity: 0;
-    transform: translateX(-20px);
-}
-/* La barretta in basso ruota di 45 gradi verso l'alto */
-.menu-toggle.is-active .bar:nth-child(3) {
-    transform: translateY(-11px) rotate(-45deg);
-}
-
 .bar {
     width: 28px;
     height: 3px;
@@ -134,11 +115,23 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
-/* --- HERO / HEADER TITOLO --- */
+.menu-toggle.is-active .bar:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+
+.menu-toggle.is-active .bar:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.menu-toggle.is-active .bar:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+/* --- HERO SECTION --- */
 .hero-section {
     padding: 50px 0;
     text-align: center;
-    background-color: transparent;
 }
 
 .hero-section h1 {
@@ -153,56 +146,164 @@ body {
 }
 
 .hero-subtitle {
-    font-family: var(--font-mid);
-    font-size: 1.2rem;
-    color: var(--text-grey);
-    font-weight: 500;
-    display: inline-block;
-    position: relative;
-}
-
-/* --- CARDS E CONTENUTO --- */
-.main-content {
-    padding: 60px 0;
-    min-height: 50vh;
-}
-
-.card {
-    background: var(--bg-card);
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-    border-top: 5px solid var(--accent-color);
-}
-
-.btn-primary {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
+    margin-top: -5px;
+    color: var(--primary-color);
+    font-weight: 900;
     font-family: var(--font-mid);
     text-transform: uppercase;
-    transition: background 0.3s;
+    letter-spacing: 1px;
 }
 
-.btn-primary:hover {
-    background-color: var(--accent-color);
+/* --- GRIGLIA CARDS (Main Content) --- */
+.main-content {
+    padding: 60px 0;
 }
 
-/* --- FOOTER MINIMALE --- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    margin-bottom: 60px;
+    align-items: center;
+}
+
+/* --- CARD --- */
+
+.zine-card {
+    background: white;
+    border: 3px solid var(--primary-color);
+    border-radius: 8px 8px 8px 8px;
+    position: relative;
+    box-shadow: 8px 8px 0px var(--accent-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.zine-card:hover {
+    animation: cardWiggle 0.3s ease-in-out;
+}
+
+.card-tag {
+    position: absolute;
+    top: -12px;
+    right: 15px;
+    background: var(--alert-color);
+    box-shadow: 3px 3px 0px var(--primary-color);
+    color: white;
+    padding: 4px 12px;
+    font-family: var(--font-mid);
+    font-weight: 800;
+    font-size: 0.75rem;
+    transform: rotate(3deg);
+    z-index: 10;
+    text-transform: uppercase;
+}
+
+.card-image {
+    width: 100%;
+    height: 240px;
+    background: #f0f0f0;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+.placeholder-img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+}
+
+.card-content {
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+    z-index: 1;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden
+}
+
+.card-content::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 150%;
+    height: 150%;
+    transform: rotate(-15deg);
+    background-image: radial-gradient(var(--accent-color) 4px, transparent 4px);
+    background-size: 16px 16px;
+    -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.card-content h3 {
+    font-family: var(--font-mid);
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.card-content p {
+    font-size: 0.9rem;
+    color: var(--text-grey);
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.card-btn {
+    margin-top: auto;
+    font-family: var(--font-mid);
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--accent-color);
+    align-self: flex-start;
+}
+
+/* --- RISALTO CARD CENTRALE --- */
+.zine-card.featured {
+    scale: 1.2;
+    z-index: 10;
+    box-shadow: 12px 12px 0px var(--accent-color);
+}
+
+/* --- FOOTER --- */
 .main-footer {
     background-color: var(--primary-color);
     color: var(--text-light);
-    padding: 30px 0; /* Molto più stretto */
+    padding: 60px 0;
     margin-top: 60px;
-    font-family: var(--font-body);
+    position: relative;
+    overflow: hidden;
+}
+
+.main-footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(var(--accent-color) 2px, transparent 2px);
+    background-size: 18px 18px;
+    -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0.6;
+    pointer-events: none;
 }
 
 .footer-content {
+    position: relative;
+    z-index: 1;
     display: flex;
-    justify-content: space-between; /* Spinge i testi a sinistra e i link a destra */
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -210,10 +311,6 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
-}
-
-.footer-sep {
-    opacity: 0.3;
 }
 
 .copyright {
@@ -230,57 +327,43 @@ body {
 }
 
 .footer-right a {
-    color: var(--text-light); /* Colore iniziale dell'icona (stroke) */
-    display: flex;
-    align-items: center;
+    color: var(--text-light);
     transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .footer-right a:hover {
-    color: var(--accent-color); /* L'icona diventa azzurra */
-    transform: scale(1.1);      /* Un leggerissimo ingrandimento al posto dello spostamento */
+    color: var(--accent-color);
+    transform: scale(1.1);
 }
 
-/* Assicura che l'SVG erediti il colore dal link */
 .footer-right svg {
-    stroke: currentColor; 
-}
-
-.footer-right a svg {
-    display: block;
-    width: 22px;  /* Puoi regolare la dimensione da qui centralmente */
+    stroke: currentColor;
+    width: 22px;
     height: 22px;
-    stroke-width: 1.5; /* Spessore del tratto per un look più raffinato */
-    transition: transform 0.2s ease;
-}
-
-.footer-right a:hover svg {
-    transform: translateY(-3px); /* Un piccolo salto verso l'alto al posto dello spostamento laterale */
+    stroke-width: 1.5;
 }
 
 /* --- RESPONSIVE --- */
-@media screen and (max-width: 600px) {
-    .footer-content {
-        flex-direction: column; /* Incolonna tutto su mobile */
-        gap: 20px;
-        text-align: center;
+@media screen and (max-width: 900px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 50px;
+        /* Più spazio tra le card in colonna */
     }
-    
-    .footer-left {
-        flex-direction: column;
-        gap: 5px;
-    }
-    
-    .footer-sep {
-        display: none; /* Nasconde la barretta verticale su mobile */
+
+    .zine-card.featured {
+        scale: 1;
+        box-shadow: 8px 8px 0px var(--accent-color);
+        order: -1;
+        margin-bottom: 20px;
     }
 }
 
-/* --- MOBILE RESPONSIVE --- */
 @media screen and (max-width: 768px) {
     .nav-links {
-        display: flex;
-        /* Cambiato da none a flex per permettere l'animazione */
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -291,49 +374,68 @@ body {
         height: 100vh;
         background-color: var(--bg-card);
         z-index: 999;
-
-        /* STATO INIZIALE (Nascosto) */
         opacity: 0;
         visibility: hidden;
         transform: translateY(-20px);
-        /* Parte leggermente più in alto */
-
-        /* LA TRANSIZIONE: fluida e con un tocco di "molla" */
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* STATO ATTIVO (Quando il menu è aperto) */
     .nav-links.active {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
-        /* Torna nella sua posizione originale */
     }
 
     .nav-links li {
         margin: 20px 0;
-        transform: translateY(20px);
-        opacity: 0;
-        transition: all 0.4s ease 0.2s;
-        /* Il 0.2s finale è il ritardo (delay) */
-    }
-
-    .nav-links.active li {
-        transform: translateY(0);
-        opacity: 1;
     }
 
     .nav-links a {
         font-size: 1.8rem;
-        /* Testo più grande e leggibile */
-        color: var(--primary-color);
     }
 
-    /* IMPORTANTE: Dobbiamo assicurarci che il tasto hamburger 
-       rimanga visibile SOPRA la tendina per poterla chiudere */
     .menu-toggle {
         display: flex;
         z-index: 1000;
-        /* Più alto di .nav-links */
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .footer-left {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+/* Animazione Shake/Wiggle */
+@keyframes cardWiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-1deg);
+    }
+
+    50% {
+        transform: rotate(1deg);
+    }
+
+    75% {
+        transform: rotate(-1deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
     }
 }

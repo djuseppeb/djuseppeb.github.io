@@ -28,7 +28,7 @@
             </button>
 
             <ul class="nav-links">
-                <li><a href="fanzine.html" class="active">L'Eco dell'Oco</a></li>
+                <li><a href="fanzine.html">L'Eco dell'Oco</a></li>
                 <li><a href="giochi.html">Giochi</a></li>
                 <li><a href="progetti.html">Altri Progetti</a></li>
             </ul>
@@ -42,11 +42,46 @@
         </div>
     </header>
 
-    <main class="main-content container">
-        <section class="card">
-            <h2>Benvenuti nell'Archivio</h2>
-            <p>Qui troverai tutti i numeri della fanzine e i progetti ludici curati da Giuseppe Basile.</p>
-        </section>
+    <main class="main-content">
+        <div class="container">
+            <div class="card-grid">
+
+                <article class="zine-card">
+                    <div class="card-image">
+                        <div class="placeholder-img"></div> 
+                    </div>
+                    <div class="card-content">
+                        <h3>GAME DESIGN</h3>
+                        <p>Prova i giochi che ho creato!</p>
+                        <a href="fanzine.html" class="card-btn">Vedi tutto →</a>
+                    </div>
+                </article>
+
+                <article class="zine-card featured">
+                    <div class="card-tag">NUOVO</div>
+                    <div class="card-image">
+                        <div class="placeholder-img"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>L'ECO DELL'OCO</h3>
+                        <p>Leggi la mia fanzine dedicata al mordo nerd e a tutto ciò che mi piace!</p>
+                        <a href="fanzine.html" class="card-btn">Sfoglia i numeri →</a>
+                    </div>
+                </article>
+
+                <article class="zine-card">
+                    <div class="card-image">
+                        <div class="placeholder-img"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Altri Progetti</h3>
+                        <p>Di tutto e di più. Creatività, video e tanto altro!</p>
+                        <a href="progetti.html" class="card-btn">Vedi tutto →</a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
     </main>
 
     <footer class="main-footer">
@@ -59,7 +94,7 @@
             </div>
 
             <div class="footer-right">
-        
+
                 <a href="https://www.instagram.com/djuseppegrm" title="Instagram">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -122,13 +157,12 @@
     <script>
         const menu = document.querySelector('#mobile-menu');
         const menuLinks = document.querySelector('.nav-links');
-        const body = document.querySelector('body'); // Selezioniamo il body
+        const body = document.querySelector('body'); 
 
         menu.addEventListener('click', function () {
             menu.classList.toggle('is-active');
             menuLinks.classList.toggle('active');
 
-            // Se il menu è aperto, blocca lo scroll. Se chiuso, riabilitalo.
             if (menuLinks.classList.contains('active')) {
                 body.style.overflow = 'hidden';
             } else {
