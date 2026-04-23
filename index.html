@@ -1,69 +1,89 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giochi dell'Oco | Giuseppe Basile</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Orbitron:wght@400..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
 
-    <header class="main-header">
-        <div class="container">
-            <h1>Giochi dell'Oco</h1>
-            <p class="subtitle">di Giuseppe 'Djuseppe' Basile</p>
-        </div>
-    </header>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo-colori.svg" alt="Logo Giochi dell'Oco" id="site-logo">
+                </a>
+            </div>
 
-    <nav class="main-nav">
-        <div class="container">
-            <ul>
-                <li><a href="index.html">L'Eco dell'Oco</a></li>
+            <button class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="fanzine.html" class="active">L'Eco dell'Oco</a></li>
                 <li><a href="giochi.html">Giochi</a></li>
                 <li><a href="progetti.html">Altri Progetti</a></li>
             </ul>
         </div>
     </nav>
 
-    <main class="main-content container">
-        
-        <section class="card">
-            <h2>Benvenuti su Giochi dell'Oco</h2>
-            <p>Questo è un placeholder. Qui potrai inserire la presentazione della tua fanzine, le ultime novità o una breve introduzione al tuo mondo creativo.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit.</p>
-            <a href="#" class="btn-primary">Scopri di più</a>
-        </section>
+    <header class="hero-section">
+        <div class="container">
+            <h1>Giochi dell'Oco</h1>
+            <p class="subtitle">di Giuseppe 'Djuseppe' Basile</p>
+        </div>
+    </header>
 
+    <main class="main-content container">
+        <section class="card">
+            <h2>Benvenuti nell'Archivio</h2>
+            <p>Qui troverai tutti i numeri della fanzine e i progetti ludici curati da Giuseppe Basile.</p>
+        </section>
     </main>
 
     <footer class="main-footer">
-        <div class="container footer-grid">
-            
-            <div class="footer-col">
-                <h3>Giochi dell'Oco</h3>
-                <p>&copy; 2024 Giuseppe Basile.<br>Tutti i diritti riservati.</p>
+        <div class="container footer-content">
+            <div class="footer-left">
+                <div class="logo">
+                    <img src="img/logo-bn.svg" alt="Logo Giochi dell'Oco" id="mini-logo">
+                </div>
+                <p class="copyright">&copy; 2026 Giuseppe Basile</p>
             </div>
 
-            <div class="footer-col">
-                <h4>Navigazione</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Archivio</a></li>
-                </ul>
+            <div class="footer-right">
+                <a href="mailto:tuaemail@esempio.it">Email</a>
+                <a href="https://github.com/djuseppeb" target="_blank">GitHub</a>
+                <a href="#">Instagram</a>
             </div>
-
-            <div class="footer-col">
-                <h4>Contatti</h4>
-                <ul class="contact-info">
-                    <li>Email: <a href="mailto:basilegiuseppe97@gmail.com">basilegiuseppe97@gmail.com</a></li>
-                    <li>Instagram: <a href="https://www.instagram.com/djuseppegrm/">@djuseppegrm</a></li>
-                </ul>
-            </div>
-
         </div>
     </footer>
 
+    <script>
+        const menu = document.querySelector('#mobile-menu');
+        const menuLinks = document.querySelector('.nav-links');
+        const body = document.querySelector('body'); // Selezioniamo il body
+
+        menu.addEventListener('click', function () {
+            menu.classList.toggle('is-active');
+            menuLinks.classList.toggle('active');
+
+            // Se il menu è aperto, blocca lo scroll. Se chiuso, riabilitalo.
+            if (menuLinks.classList.contains('active')) {
+                body.style.overflow = 'hidden';
+            } else {
+                body.style.overflow = 'auto';
+            }
+        });
+    </script>
+
 </body>
+
 </html>

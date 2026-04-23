@@ -1,24 +1,21 @@
-/* --- VARIABILI COLORE E FONT--- */
+/* --- VARIABILI COLORE E FONT --- */
 :root {
-    --primary-color: #356296;    /* Blu scuro */
-    --accent-color: #5cc1db;     /* Azzurro */
+    --primary-color: #356296; /* Blu scuro */
+    --accent-color: #5cc1db; /* Azzurro */
     --text-dark: #333333;
+    --text-grey: #666666;
     --text-light: #f4f4f4;
     --bg-body: #fdfdfd;
     --bg-card: #ffffff;
-    --shadow: 0 4px 15px rgba(0,0,0,0.1);
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 
+
+    --font-titles: 'Orbitron', sans-serif;   /* Titoli */
+    --font-mid: "JetBrains Mono", monospace;
+    --font-body: 'Open Sans', sans-serif;    /* Paragrafi */
 }
 
-/* --- CONFIGURAZIONE FONT --- */
-:root {
-    --font-body: 'Open Sans', sans-serif; /* Testo base */
-    --font-heading: 'Aldrich', sans-serif; /* Titolo principale */
-    --font-titles: 'Open Sans', sans-serif; /* Titoli secondari */
-}
-
-
-/* --- RESET BASE --- */
+/* --- RESET E BASE --- */
 * {
     margin: 0;
     padding: 0;
@@ -30,146 +27,289 @@ body {
     background-color: var(--bg-body);
     color: var(--text-dark);
     line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* --- HEADER --- */
-.main-header {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 40px 0;
-    text-align: center;
-}
-
-.main-header h1 {
-    font-family: var(--font-heading);
-    font-size: 2.5rem;
-    font-weight: 900;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-}
-
-.subtitle {
-    font-weight: 300;
-    opacity: 0.8;
-    font-style: italic;
-}
-
 /* --- NAVBAR --- */
-.main-nav {
-    background-color: #1a252f;
+.navbar {
+    background-color: var(--bg-card);
+    height: 80px;
+    display: flex;
+    align-items: center;
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: none;
+    /* Rimosso l'ombra per un look più "float" */
 }
 
-.main-nav ul {
-    list-style: none;
+.nav-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
-.main-nav a {
+/* Logo Placeholder */
+.logo #site-logo {
+    height: 50px;
+    width: auto;
     display: block;
-    color: white;
+}
+
+.logo #mini-logo {
+    height: 30px;
+    width: auto;
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    color: var(--primary-color);
     text-decoration: none;
-    padding: 15px 25px;
-    font-weight: bold;
-    font-size: 0.9rem;
-    transition: background 0.3s;
+    font-family: var(--font-mid);
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 800;
+    transition: color 0.3s ease;
 }
 
-.main-nav a:hover, .main-nav a.active {
-    background-color: var(--accent-color);
+.nav-links a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
 }
 
-/* --- CORPO CENTRALE --- */
-.main-content {
-    flex: 1; /* Spinge il footer in basso */
+.nav-links a.active {
+    color: var(--text-dark);
+    text-decoration: underline;
+}
+
+/* --- HAMBURGER MENU --- */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* --- ANIMAZIONE DA HAMBURGER A "X" --- */
+
+/* La barretta in alto ruota di 45 gradi verso il basso */
+.menu-toggle.is-active .bar:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+/* La barretta centrale sparisce (diventa invisibile e trasla) */
+.menu-toggle.is-active .bar:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+/* La barretta in basso ruota di 45 gradi verso l'alto */
+.menu-toggle.is-active .bar:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+.bar {
+    width: 28px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 4px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- HERO / HEADER TITOLO --- */
+.hero-section {
     padding: 50px 0;
+    text-align: center;
+    background-color: transparent;
 }
 
-/* --- CARD --- */
+.hero-section h1 {
+    font-family: var(--font-titles);
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 900;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-grey);
+    font-weight: 300;
+    font-style: italic;
+}
+
+/* --- CARDS E CONTENUTO --- */
+.main-content {
+    padding: 60px 0;
+    min-height: 50vh;
+}
+
 .card {
     background: var(--bg-card);
-    padding: 30px;
+    padding: 40px;
     border-radius: 12px;
     box-shadow: var(--shadow);
-    margin-bottom: 30px;
-}
-
-.card h2 {
-    font-family: var(--font-titles);
-    margin-bottom: 20px;
-    color: var(--primary-color);
+    border-top: 5px solid var(--accent-color);
 }
 
 .btn-primary {
     display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
+    padding: 12px 24px;
     background-color: var(--primary-color);
     color: white;
     text-decoration: none;
-    border-radius: 5px;
-    transition: opacity 0.3s;
+    border-radius: 6px;
+    font-family: var(--font-mid);
+    text-transform: uppercase;
+    transition: background 0.3s;
 }
 
 .btn-primary:hover {
-    opacity: 0.9;
+    background-color: var(--accent-color);
 }
 
-/* --- FOOTER --- */
+/* --- FOOTER MINIMALE --- */
 .main-footer {
-    background-color: #1a252f;
+    background-color: var(--primary-color);
     color: var(--text-light);
-    padding: 50px 0 20px;
+    padding: 30px 0; /* Molto più stretto */
+    margin-top: 60px;
+    font-family: var(--font-body);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between; /* Spinge i testi a sinistra e i link a destra */
+    align-items: center;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-sep {
+    opacity: 0.3;
+}
+
+.copyright {
+    font-family: var(--font-mid);
+    font-size: 0.85rem;
+    opacity: 0.8;
+    text-transform: uppercase;
+}
+
+.footer-right {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-right a {
+    color: var(--text-light);
+    text-decoration: none;
     font-size: 0.9rem;
+    font-family: var(--font-nav);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
 }
 
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 40px;
-    margin-bottom: 30px;
-}
-
-.footer-col h3, .footer-col h4 {
-    margin-bottom: 15px;
+.footer-right a:hover {
     color: var(--accent-color);
 }
 
-.footer-col ul {
-    list-style: none;
-}
-
-.footer-col ul li {
-    margin-bottom: 8px;
-}
-
-.footer-col a {
-    color: #bdc3c7;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-col a:hover {
-    color: white;
-}
-
 /* --- RESPONSIVE --- */
-@media (max-width: 600px) {
-    .main-nav ul {
-        flex-direction: column;
+@media screen and (max-width: 600px) {
+    .footer-content {
+        flex-direction: column; /* Incolonna tutto su mobile */
+        gap: 20px;
         text-align: center;
+    }
+    
+    .footer-left {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .footer-sep {
+        display: none; /* Nasconde la barretta verticale su mobile */
+    }
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: flex;
+        /* Cambiato da none a flex per permettere l'animazione */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--bg-card);
+        z-index: 999;
+
+        /* STATO INIZIALE (Nascosto) */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        /* Parte leggermente più in alto */
+
+        /* LA TRANSIZIONE: fluida e con un tocco di "molla" */
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* STATO ATTIVO (Quando il menu è aperto) */
+    .nav-links.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        /* Torna nella sua posizione originale */
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+        transform: translateY(20px);
+        opacity: 0;
+        transition: all 0.4s ease 0.2s;
+        /* Il 0.2s finale è il ritardo (delay) */
+    }
+
+    .nav-links.active li {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .nav-links a {
+        font-size: 1.8rem;
+        /* Testo più grande e leggibile */
+        color: var(--primary-color);
+    }
+
+    /* IMPORTANTE: Dobbiamo assicurarci che il tasto hamburger 
+       rimanga visibile SOPRA la tendina per poterla chiudere */
+    .menu-toggle {
+        display: flex;
+        z-index: 1000;
+        /* Più alto di .nav-links */
     }
 }
