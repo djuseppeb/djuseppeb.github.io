@@ -84,17 +84,21 @@ body {
     text-transform: uppercase;
     font-size: 1rem;
     font-weight: 800;
-    transition: color 0.3s ease;
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-block;
 }
 
 .nav-links a:hover {
     color: var(--accent-color);
-    text-decoration: underline;
+    transform: scale(1.1);
 }
 
 .nav-links a.active {
     color: var(--text-dark);
     text-decoration: underline;
+    pointer-events: none;
+    cursor: default;
+    transform: none !important; 
 }
 
 /* --- HAMBURGER MENU --- */
@@ -140,17 +144,21 @@ body {
 .hero-section h1 {
     font-family: var(--font-titles);
     font-size: 3.5rem;
-    color: var(--primary-color);
+    color: var(--accent-color);
     text-transform: uppercase;
     margin-bottom: 10px;
     font-weight: 900;
+    text-shadow: 5px 5px 0px var(--primary-color);
+    display: inline-block;
 }
 
-.subtitle {
+.hero-subtitle {
+    font-family: var(--font-mid);
     font-size: 1.2rem;
     color: var(--text-grey);
-    font-weight: 300;
-    font-style: italic;
+    font-weight: 500;
+    display: inline-block;
+    position: relative;
 }
 
 /* --- CARDS E CONTENUTO --- */
@@ -218,20 +226,36 @@ body {
 .footer-right {
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 
 .footer-right a {
-    color: var(--text-light);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-family: var(--font-nav);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: color 0.3s ease;
+    color: var(--text-light); /* Colore iniziale dell'icona (stroke) */
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .footer-right a:hover {
-    color: var(--accent-color);
+    color: var(--accent-color); /* L'icona diventa azzurra */
+    transform: scale(1.1);      /* Un leggerissimo ingrandimento al posto dello spostamento */
+}
+
+/* Assicura che l'SVG erediti il colore dal link */
+.footer-right svg {
+    stroke: currentColor; 
+}
+
+.footer-right a svg {
+    display: block;
+    width: 22px;  /* Puoi regolare la dimensione da qui centralmente */
+    height: 22px;
+    stroke-width: 1.5; /* Spessore del tratto per un look più raffinato */
+    transition: transform 0.2s ease;
+}
+
+.footer-right a:hover svg {
+    transform: translateY(-3px); /* Un piccolo salto verso l'alto al posto dello spostamento laterale */
 }
 
 /* --- RESPONSIVE --- */
