@@ -47,37 +47,43 @@
             <div class="card-grid">
 
                 <article class="zine-card">
-                    <div class="card-image">
-                        <div class="placeholder-img"></div> 
-                    </div>
-                    <div class="card-content">
-                        <h3>GAME DESIGN</h3>
-                        <p>Prova i giochi che ho creato!</p>
-                        <a href="fanzine.html" class="card-btn">Vedi tutto →</a>
-                    </div>
+                    <a href="fanzine.html">
+                        <div class="card-image">
+                            <img src="img\home\sinfonia_etb.png" alt="Descrizione" class="zine-img">
+                        </div>
+                        <div class="card-content">
+                            <h3>GAME DESIGN</h3>
+                            <p>Prova i giochi che ho creato!</p>
+                            <span class="card-btn">Vedi tutto! →</span>
+                        </div>
+                    </a>
                 </article>
 
                 <article class="zine-card featured">
                     <div class="card-tag">NUOVO</div>
-                    <div class="card-image">
-                        <div class="placeholder-img"></div>
-                    </div>
-                    <div class="card-content">
-                        <h3>L'ECO DELL'OCO</h3>
-                        <p>Leggi la mia fanzine dedicata al mordo nerd e a tutto ciò che mi piace!</p>
-                        <a href="fanzine.html" class="card-btn">Sfoglia i numeri →</a>
-                    </div>
+                    <a href="fanzine.html">
+                        <div class="card-image">
+                            <div class="placeholder-img"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3>L'ECO DELL'OCO</h3>
+                            <p>Leggi la mia fanzine dedicata al mondo nerd e a tutto ciò che mi piace!</p>
+                            <span class="card-btn">Sfoglia i numeri! →</span>
+                        </div>
+                    </a>
                 </article>
 
                 <article class="zine-card">
+                    <a href="fanzine.html"></a>
                     <div class="card-image">
                         <div class="placeholder-img"></div>
                     </div>
                     <div class="card-content">
                         <h3>Altri Progetti</h3>
                         <p>Di tutto e di più. Creatività, video e tanto altro!</p>
-                        <a href="progetti.html" class="card-btn">Vedi tutto →</a>
+                        <span class="card-btn">Vedi tutto! →</span>
                     </div>
+                    </a>
                 </article>
 
             </div>
@@ -157,7 +163,7 @@
     <script>
         const menu = document.querySelector('#mobile-menu');
         const menuLinks = document.querySelector('.nav-links');
-        const body = document.querySelector('body'); 
+        const body = document.querySelector('body');
 
         menu.addEventListener('click', function () {
             menu.classList.toggle('is-active');
