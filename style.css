@@ -199,9 +199,13 @@ body {
     background: white;
     border-radius: 8px 8px 8px 8px;
     position: relative;
-    box-shadow: 8px 8px 0px var(--accent-color);
+    box-shadow:
+        4px 4px 0px var(--secondary-color),
+        10px 10px 0px var(--accent-color);
     display: flex;
     flex-direction: column;
+    border: 3px solid var(--secondary-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .zine-card a {
@@ -313,14 +317,15 @@ body {
 }
 
 
-
-
-
 /* --- RISALTO CARD CENTRALE --- */
 .zine-card.featured {
+    border-color: var(--accent-color);
     scale: 1.2;
     z-index: 10;
-    box-shadow: 12px 12px 0px var(--accent-color);
+    box-shadow: 
+        6px 6px 0px var(--secondary-color),
+        12px 12px 0px var(--accent-color),
+        0 0 20px var(--accent-color);
 }
 
 /* --- FOOTER --- */
