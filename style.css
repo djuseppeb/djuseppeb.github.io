@@ -157,19 +157,23 @@ body {
     font-weight: 900;
     line-height: 1.1;
     z-index: 1;
+    transform: skewX(-5deg);
 
     color: var(--bg-body);
 
-    text-shadow:
+    /* Opzionale: rende la texture più delicata */
+    background-blend-mode: overlay;
+
+        text-shadow:
         /* Bordo esterno (stroke artificiale) */
         -4px -4px 0 var(--secondary-color),
         4px -4px 0 var(--secondary-color),
         -4px 4px 0 var(--secondary-color),
         4px 4px 0 var(--secondary-color),
-        0px 5px 0px var(--secondary-color),
-        0px 6px 0px var(--secondary-color),
-        0px 7px 0px var(--secondary-color),
-        0px 8px 0px var(--secondary-color),
+        2px 5px 0px var(--secondary-color),
+        4px 6px 0px var(--secondary-color),
+        6px 7px 0px var(--secondary-color),
+        8px 8px 0px var(--secondary-color),
         0px 9px 15px rgba(0, 0, 0, 0.5);
     /* Ombra finale */
 }
