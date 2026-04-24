@@ -32,6 +32,12 @@ body {
     background-color: var(--primary-color);
     margin: 0;
     padding: 0;
+    background-image: url('img/back.jpg');
+    background-blend-mode: multiply; /* Fonde l'immagine con il colore di sfondo */
+    opacity: 0.8;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
@@ -144,7 +150,7 @@ body {
 .hero-section {
     padding: 20px 0px 80px 0px;
     text-align: center;
-    background-color: var(--primary-color);
+    background-color: transparent;
 }
 
 .hero-section h1 {
@@ -324,8 +330,102 @@ body {
     z-index: 10;
     box-shadow: 
         6px 6px 0px var(--secondary-color),
-        12px 12px 0px var(--accent-color),
+        12px 12px 0px var(--alert-color),
         0 0 20px var(--accent-color);
+}
+
+.zine-card.featured::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* Crea una sfumatura azzurra che parte dal basso */
+    background: linear-gradient(to top, rgba(0, 212, 255, 0.15) 0%, transparent 40%);
+    pointer-events: none; /* Così puoi cliccare i tasti sotto */
+    border-radius: 8px;
+    z-index: 2;
+}
+
+/* --- SIMBOLINI GEOMETRICI (SPARKS) INTORNO ALLA CARD --- */
+
+/* Contenitore principale all'interno della card: si assicura che i simboli non creino scrollbar */
+.zine-card.featured .card-sparks {
+    position: absolute;
+    inset: 0;
+    pointer-events: none; /* Non bloccano i click sulla card */
+    z-index: -1; /* Fluttuano *dietro* la card per non coprire il testo */
+}
+
+/* Regola base per ogni singolo simbolino */
+.spark {
+    position: absolute;
+    display: block;
+    width: 14px;  /* Dimensione dei simbolini */
+    height: 14px;
+    opacity: 1;
+    transition: transform 0.3s ease;
+}
+
+/* LA FORMA A CROCE (PLUS) - Usiamo pseudo-elementi per crearla con precisione */
+.spark::before,
+.spark::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: currentColor; /* Prende il color definito sotto */
+    border-radius: 2px;
+}
+
+/* Linea Orizzontale */
+.spark::before {
+    width: 100%;
+    height: 4px; /* Spessore linea */
+    transform: translate(-50%, -50%);
+}
+
+/* Linea Verticale */
+.spark::after {
+    width: 4px; /* Spessore linea */
+    height: 100%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* --- POSIZIONAMENTO SPECIFICO COME NELLA FOTO 6 --- */
+
+/* 1. Croci Ciano in Alto a Sinistra */
+.s-cyan-1 {
+    color: var(--accent-color); /* Ciano */
+    top: -30px;
+    left: -20px;
+    transform: scale(0.8) rotate(-15deg);
+}
+
+.s-cyan-2 {
+    color: var(--accent-color);
+    top: -10px;
+    left: -40px;
+    transform: scale(1.1) rotate(20deg);
+}
+
+/* 2. Croci Arancioni in Basso a Destra */
+.s-orange-1 {
+    color: var(--alert-color); /* L'arancione che avevi già nel tag */
+    bottom: -35px;
+    right: -15px;
+    transform: scale(1) rotate(10deg);
+}
+
+.s-orange-2 {
+    color: var(--alert-color);
+    bottom: -15px;
+    right: -35px;
+    transform: scale(0.9) rotate(-30deg);
+}
+
+/* TOCCO EXTRA INTERATTIVO: Al passaggio del mouse, i simboli "vibrano" */
+.zine-card.featured:hover .spark {
+    filter: brightness(1.2) drop-shadow(0 0 5px currentColor);
 }
 
 /* --- FOOTER --- */
