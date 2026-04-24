@@ -3,7 +3,7 @@
     --primary-color: #356296;
     --accent-color: #5cc1db;
     --alert-color: #ff6b6b;
-    --text-dark: #333333;
+    --text-dark: #111111;
     --text-grey: #666666;
     --text-light: #f4f4f4;
     --bg-body: #fdfdfd;
@@ -141,7 +141,7 @@ body {
     text-transform: uppercase;
     margin-bottom: 10px;
     font-weight: 900;
-    text-shadow: 5px 5px 0px var(--primary-color);
+    text-shadow: 4px 4px 0px var(--primary-color);
     display: inline-block;
 }
 
@@ -185,7 +185,7 @@ body {
 
 .card-content h3 {
     font-family: var(--font-mid);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: var(--primary-color);
     margin-bottom: 12px;
     text-transform: uppercase;
@@ -193,8 +193,9 @@ body {
 }
 
 .card-content p {
+    font-family: var(--font-mid);
     font-size: 0.9rem;
-    color: var(--text-grey);
+    color: var(--text-dark);
     margin-bottom: 25px;
     line-height: 1.5;
 }
@@ -203,10 +204,10 @@ body {
     font-size: 1.1rem;
     margin-top: auto;
     font-family: var(--font-mid);
-    font-weight: 800;
+    font-weight: 700;
     color: var(--primary-color);
     border-bottom: 3px solid var(--accent-color);
-    align-self: flex-start;
+    align-self: flex-end;
 }
 
 .zine-card:hover {
@@ -215,6 +216,7 @@ body {
 
 .zine-card:hover .card-btn {
     color: var(--accent-color);
+
 }
 
 .card-tag {
