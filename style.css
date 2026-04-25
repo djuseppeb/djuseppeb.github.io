@@ -29,15 +29,19 @@ body {
     line-height: 1.6;
     width: 100%;
     min-height: 100vh;
-    background-color: var(--primary-color);
     margin: 0;
     padding: 0;
+
+}
+
+.page-main-content{
     background-image: url('img/back.jpg');
-    background-blend-mode: multiply; /* Fonde l'immagine con il colore di sfondo */
-    opacity: 0.8;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    padding-bottom: 60px;
+    background-blend-mode: multiply;
+    background-color: var(--primary-color);
 }
 
 
@@ -163,15 +167,20 @@ body {
     -webkit-text-stroke: 4px var(--primary-color);
     paint-order: stroke fill;
 
+    rotate: -1deg;
+
+    transform: skewX(-10deg);
+
     text-shadow:
-        1px 1px 0px var(--secondary-color),
-        2px 2px 0px var(--secondary-color),
-        3px 3px 0px var(--secondary-color),
-        4px 4px 0px var(--secondary-color),
-        5px 5px 0px var(--secondary-color),
-        6px 6px 0px var(--secondary-color),
-        7px 7px 0px var(--secondary-color),
-        8px 8px 0px var(--secondary-color);
+        0px 1px 0px var(--primary-color),
+        0px 2px 0px var(--primary-color),
+        0px 3px 0px var(--primary-color),
+        0px 4px 0px var(--primary-color),
+        0px 5px 0px var(--primary-color),
+        0px 6px 0px var(--primary-color),
+        0px 7px 0px var(--primary-color),
+        0px 8px 0px var(--primary-color),
+        0px 0px 20px var(--secondary-color);
 
     display: inline-block;
 
@@ -433,7 +442,6 @@ body {
     background-color: var(--primary-color);
     color: var(--text-light);
     padding: 60px 0;
-    margin-top: 60px;
     position: relative;
     overflow: hidden;
 }
@@ -478,6 +486,12 @@ body {
     display: flex;
     gap: 20px;
     align-items: center;
+}
+
+.footer-credits a {
+    font-family: var(--font-mid);
+    color: var(--text-light);
+    font-size: 0.65rem;
 }
 
 .footer-right a {
