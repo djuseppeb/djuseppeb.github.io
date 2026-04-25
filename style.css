@@ -34,7 +34,7 @@ body {
 
 }
 
-.page-main-content{
+.page-main-content {
     background-image: url('img/back.jpg');
     background-position: center center;
     background-repeat: no-repeat;
@@ -154,7 +154,7 @@ body {
 @media (max-width: 768px) {
     .hero-section {
         /* Riduciamo il padding inferiore (es. a 40px) per non lasciare troppo vuoto */
-        padding-bottom: 40px; 
+        padding-bottom: 40px;
     }
 }
 
@@ -341,7 +341,7 @@ body {
     border-color: var(--accent-color);
     scale: 1.2;
     z-index: 10;
-    box-shadow: 
+    box-shadow:
         6px 6px 0px var(--secondary-color),
         12px 12px 0px var(--alert-color),
         0 0 20px var(--accent-color);
@@ -353,7 +353,8 @@ body {
     inset: 0;
     /* Crea una sfumatura azzurra che parte dal basso */
     background: linear-gradient(to top, rgba(0, 212, 255, 0.15) 0%, transparent 40%);
-    pointer-events: none; /* Così puoi cliccare i tasti sotto */
+    pointer-events: none;
+    /* Così puoi cliccare i tasti sotto */
     border-radius: 8px;
     z-index: 2;
 }
@@ -364,15 +365,18 @@ body {
 .zine-card.featured .card-sparks {
     position: absolute;
     inset: 0;
-    pointer-events: none; /* Non bloccano i click sulla card */
-    z-index: -1; /* Fluttuano *dietro* la card per non coprire il testo */
+    pointer-events: none;
+    /* Non bloccano i click sulla card */
+    z-index: -1;
+    /* Fluttuano *dietro* la card per non coprire il testo */
 }
 
 /* Regola base per ogni singolo simbolino */
 .spark {
     position: absolute;
     display: block;
-    width: 14px;  /* Dimensione dei simbolini */
+    width: 14px;
+    /* Dimensione dei simbolini */
     height: 14px;
     opacity: 1;
     transition: transform 0.3s ease;
@@ -385,20 +389,23 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    background: currentColor; /* Prende il color definito sotto */
+    background: currentColor;
+    /* Prende il color definito sotto */
     border-radius: 2px;
 }
 
 /* Linea Orizzontale */
 .spark::before {
     width: 100%;
-    height: 4px; /* Spessore linea */
+    height: 4px;
+    /* Spessore linea */
     transform: translate(-50%, -50%);
 }
 
 /* Linea Verticale */
 .spark::after {
-    width: 4px; /* Spessore linea */
+    width: 4px;
+    /* Spessore linea */
     height: 100%;
     transform: translate(-50%, -50%);
 }
@@ -408,7 +415,8 @@ body {
 
 /* 1. Croci Ciano in Alto a Sinistra */
 .s-cyan-1 {
-    color: var(--accent-color); /* Ciano */
+    color: var(--accent-color);
+    /* Ciano */
     top: -30px;
     left: -20px;
     transform: scale(0.8) rotate(-15deg);
@@ -423,7 +431,8 @@ body {
 
 /* 2. Croci Arancioni in Basso a Destra */
 .s-orange-1 {
-    color: var(--alert-color); /* L'arancione che avevi già nel tag */
+    color: var(--alert-color);
+    /* L'arancione che avevi già nel tag */
     bottom: -35px;
     right: -15px;
     transform: scale(1) rotate(10deg);
@@ -609,5 +618,201 @@ body {
 
     100% {
         transform: rotate(0deg);
+    }
+}
+
+/* --- BIO CARD SPECIFICA --- */
+.bio-card {
+    display: flex;
+    background: white;
+    border: 3px solid var(--secondary-color);
+    border-radius: 12px;
+    /* Manteniamo la tua firma visiva: la doppia ombra solida */
+    box-shadow:
+        4px 4px 0px var(--secondary-color),
+        10px 10px 0px var(--accent-color);
+    margin: 40px 0;
+    overflow: hidden;
+    /* Per l'immagine e il raggio del bordo */
+    min-height: 350px;
+}
+
+.bio-content {
+    flex: 2;
+    /* Prende più spazio del testo */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    position: relative;
+}
+
+.bio-content h2 {
+    font-family: var(--font-titles);
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.bio-content p {
+    font-family: var(--font-mid);
+    color: var(--text-dark);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.bio-image {
+    flex: 1;
+    /* Spazio per l'immagine */
+    background: var(--accent-color);
+    border-left: 3px solid var(--secondary-color);
+}
+
+.bio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Badge di stile per la Bio */
+.stat-badge {
+    display: inline-block;
+    margin-top: 20px;
+    margin-right: 10px;
+    padding: 5px 15px;
+    background: var(--secondary-color);
+    color: white;
+    font-family: var(--font-mid);
+    font-weight: 700;
+    font-size: 0.8rem;
+    border-radius: 5px;
+}
+
+/* --- RESPONSIVE BIO --- */
+@media screen and (max-width: 768px) {
+    .bio-card {
+        flex-direction: column-reverse;
+        /* Testo sotto, immagine sopra */
+        min-height: auto;
+    }
+
+    .bio-image {
+        height: 300px;
+        border-left: none;
+        border-bottom: 3px solid var(--secondary-color);
+    }
+
+    .bio-content {
+        padding: 25px;
+    }
+
+    .bio-content h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* --- BLOCCO INFO BIO (STATICO) --- */
+.info-block {
+    background: white;
+    border: 3px solid var(--secondary-color);
+    border-radius: 8px;
+    padding: 35px;
+    margin-bottom: 50px;
+    position: relative;
+
+    /* Manteniamo la tua firma visiva: la doppia ombra solida */
+    box-shadow:
+        4px 4px 0px var(--secondary-color),
+        10px 10px 0px var(--accent-color);
+}
+
+/* Titolo del blocco */
+.info-block h3 {
+    font-family: var(--font-titles);
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Testo del blocco */
+.info-block p {
+    font-family: var(--font-mid);
+    color: var(--text-dark);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* Rimuoviamo qualsiasi effetto hover che potrebbe derivare da altre classi */
+.info-block:hover {
+    transform: none;
+    animation: none;
+}
+
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin: 20px 0 50px 0;
+    justify-content: center;
+}
+
+.inv-item {
+    background: white;
+    border: 3px solid var(--secondary-color);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    /* Ombra più piccola per elementi piccoli */
+    box-shadow: 5px 5px 0px var(--accent-color);
+}
+
+.inv-icon {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.inv-name {
+    font-family: var(--font-mid);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+}
+
+.section-title {
+    font-family: var(--font-titles);
+    color: var(--text-light);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- LOGICA RESPONSIVE PER RIGHE SEMPRE UGUALI --- */
+
+/* Tablet: Se lo schermo si restringe, passiamo a 3 colonne (e gli elementi avanzati si centrano) */
+@media screen and (max-width: 992px) {
+    .inventory-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile Large: 2 colonne (Perfetto per 8 elementi: avrai 4 righe da 2) */
+@media screen and (max-width: 768px) {
+    .inventory-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
+/* Mobile Small: Se vuoi proprio esagerare, 1 colonna sola */
+@media screen and (max-width: 480px) {
+    .inventory-grid {
+        grid-template-columns: 1fr;
     }
 }
