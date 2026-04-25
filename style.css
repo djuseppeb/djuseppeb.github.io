@@ -147,15 +147,18 @@ body {
 .hero-section {
     padding: 20px 0px 80px 0px;
     text-align: center;
-    background-color: var(--primary-color);
-}
-
-/* --- HERO SECTION --- */
-.hero-section {
-    padding: 20px 0px 80px 0px;
-    text-align: center;
     background-color: transparent;
 }
+
+/* --- OTTIMIZZAZIONE MOBILE --- */
+@media (max-width: 768px) {
+    .hero-section {
+        /* Riduciamo il padding inferiore (es. a 40px) per non lasciare troppo vuoto */
+        padding-bottom: 40px; 
+    }
+}
+
+
 
 .hero-section h1 {
     font-family: 'Orbitron', sans-serif;
@@ -193,6 +196,7 @@ body {
     font-family: var(--font-mid);
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-shadow: 2px 2px 0px var(--secondary-color);
 }
 
 /* --- GRIGLIA CARDS (Main Content) --- */
