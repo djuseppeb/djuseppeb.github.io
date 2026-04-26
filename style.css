@@ -44,6 +44,10 @@ body {
     background-color: var(--primary-color);
 }
 
+.secondary-content {
+    padding: 60px 0px 60px 0;
+    background-color: var(--secondary-color);
+}
 
 .container {
     max-width: 1100px;
@@ -1118,11 +1122,290 @@ body:has(.secondary-content) .diagonal-divider {
     }
 }
 
-/* --- SFONDO NEUTRO ARCHIVIO --- */
-.zine-archive {
+
+/* --- LIBRARY GRID (TASCHEN STYLE) --- */
+.library{
+    background-color: transparent;
+    border-radius: 8px;
+}
+
+.library-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 0.5fr));
+    gap: 40px;
+    justify-content: center;
+    min-height: 0;
+    padding: 0 20px; /* Padding gestito qui per non bloccare l'animazione */
+    transition: padding 0.4s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* La Card come Scatola da Esposizione */
+.library-card {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* Area Copertina */
+.library-card-display {
     position: relative;
-    padding: 100px 0;
-    /* Aumentato per dare spazio alla diagonale */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 3/4;
+}
+
+.library-card-display:hover{
+    scale: 1.1;
+}
+
+.library-card-display img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.library-card-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--accent-color);
+    color: white;
+    font-family: var(--font-mid);
+    font-weight: 900;
+    padding: 4px 8px;
+    font-size: 0.7rem;
+    border-radius: 4px;
+}
+
+.library-card-info{
+    padding: 10px;
+    text-align: center;
+}
+
+.card-link-wrapper {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Stile per il link sul titolo */
+.title-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.library-date {
+    font-family: var(--font-mid);
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--secondary-color);
+    display: block;
+}
+
+.library-card-footer {
+    display: flex;
+    gap: 10px;
+}
+
+.library-btn-mini {
+    flex: 1;
+    text-align: center;
+    padding: 8px;
+    font-family: var(--font-mid);
+    font-size: 0.7rem;
+    border: 2px solid var(--primary-color);
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+/* Il contenitore che gestisce l'animazione */
+.accordion-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin 0.4s ease, border-color 0.4s ease;
+    overflow: hidden;
+    border-radius: 0 0 8px 8px;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    background-color: var(--bg-card);
+}
+
+.accordion-item.is-open .accordion-content {
+    grid-template-rows: 1fr;
+    margin-bottom: 20px;
+}
+
+.accordion-item.is-open .library-grid {
+    padding: 40px 20px;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.accordion-header {
     background-color: var(--primary-color);
-    z-index: 1;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    
+    font-family: var(--font-mid);
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.accordion-header::before {
+    content: "";
+    position: absolute;
+    right: -20px;
+    top: -60%;
+    bottom: -30%;
+    width: 300px;
+    height: 200%;
+    background-image: radial-gradient(var(--accent-color) 30%, transparent 30%);
+    background-size: 8px 8px;
+    transform: rotate(15deg);
+    -webkit-mask-image: linear-gradient(135deg, transparent 40%, black 100%);
+    mask-image: linear-gradient(135deg, transparent 40%, black 100%);
+    pointer-events: none;
+}
+
+.accordion-header::after {
+    content: "+";
+    font-family: var(--font-mid);
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+/* Rotazione dell'indicatore quando è aperto */
+.accordion-item.is-open .accordion-header::after {
+    content: "-";
+    transform: rotate(180deg);
+}
+
+@media (max-width: 768px) {
+    
+    .accordion-item.is-open .library-grid {
+        padding: 15px 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .library-card {
+        flex-direction: row;
+        align-items: center;
+        padding: 8px 12px;
+        height: auto;
+        gap: 15px;
+        border: 1px solid var(--primary-color);
+        border-radius: 16px;
+    }
+
+    .library-card-display {
+        flex: 0 0 60px;
+        height: 80px;  
+        padding: 0;
+        background: transparent;
+        border-bottom: none;
+        overflow: hidden;
+    }
+
+    .library-card-display img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        box-shadow: none;
+        border-radius: 2px;
+    }
+
+    .library-card-tag {
+        display: none;
+    }
+
+    .library-card-meta {
+        padding: 0;
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .library-title {
+        font-size: 0.85rem;
+        margin: 0;
+        line-height: 1.2;
+        max-width: 60%; /* Evita che il titolo vada sopra la data */
+    }
+
+    .library-date {
+        font-size: 1rem;
+        color: var(--secondary-color);
+        white-space: nowrap;
+    }
+}
+
+.mobile-only {
+    display: none !important; /* Nasconde l'elemento su schermi grandi */
+}
+
+/* --- MEDIA QUERY (Mobile: sotto i 768px) --- */
+@media (max-width: 768px) {
+    
+    .mobile-only {
+        display: flex !important; /* Fa riapparire l'elemento solo su mobile */
+    }
+
+    /* Stile specifico per l'icona su mobile */
+    .library-download-icon {
+        color: var(--secondary-color);
+        padding: 10px;
+        margin-left: 10px;
+        transition: transform 0.2s ease;
+    }
+
+    /* Rimuoviamo l'hover o lo rendiamo adatto al touch */
+    .library-download-icon:active {
+        transform: scale(0.9);
+        color: var(--accent-color);
+    }
+
+    .library-card {
+        cursor: pointer;
+    }
+
+    .library-date {
+        display: flex;
+        flex-direction: row; /* Allineamento orizzontale */
+        justify-content: space-between; /* Spinge info a sinistra e download a destra */
+        align-items: center;
+        flex: 1; /* Occupa tutto lo spazio rimanente accanto alla cover */
+        padding: 0;
+        pointer-events: auto;
+    }
+
+    .library-download-icon.mobile-only {
+        display: flex !important;
+        padding: 10px; /* Area di tocco ottimale */
+        color: var(--secondary-color);
+        margin-left: auto; /* Ulteriore sicurezza per spingere a destra */
+    }
 }
