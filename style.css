@@ -797,6 +797,15 @@ body {
     letter-spacing: 2px;
 }
 
+.section-title p{
+    font-family: var(--font-mid);
+    color: var(--text-light);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
 /* --- LOGICA RESPONSIVE PER RIGHE SEMPRE UGUALI --- */
 
 /* Tablet: Se lo schermo si restringe, passiamo a 3 colonne (e gli elementi avanzati si centrano) */
@@ -912,6 +921,16 @@ body {
     margin-bottom: 15px;
 }
 
+.issue-title {
+    font-family: var(--font-mid);
+    color: var(--primary-color);
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 15px;
+}
+
 .issue-info-card h3 {
     font-family: var(--font-titles);
     font-size: 2.5rem;
@@ -935,7 +954,7 @@ body {
 
 .btn-solid,
 .btn-outline {
-    padding: 12px 25px;
+    padding: 6px 30px;
     font-family: var(--font-mid);
     font-weight: bold;
     text-decoration: none;
