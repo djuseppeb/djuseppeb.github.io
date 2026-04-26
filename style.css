@@ -643,7 +643,7 @@ body {
     padding: 40px;
     display: flex;
     flex-direction: column;
-    justify-content:flex-start;
+    justify-content: flex-start;
     position: relative;
 }
 
@@ -815,4 +815,314 @@ body {
     .inventory-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* ============================================================
+   PAGINA FANZINE: L'ECO DELL'OCO
+   ============================================================ */
+
+/* --- 1. HERO SECTION (L'ULTIMA USCITA) --- */
+.featured-issue {
+    padding: 80px 0;
+    width: 100%;
+}
+
+.featured-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+
+/* Copertina Sospesa con Effetto 3D */
+.issue-cover-standalone {
+    position: relative;
+    flex: 0 0 380px;
+    /* Effetto inclinazione prospettica */
+    transform: perspective(1000px) rotateY(15deg) rotateX(5deg) skewY(2deg);
+    z-index: 2;
+}
+
+.issue-cover-standalone img {
+    width: 100%;
+    height: auto;
+    border: 4px solid var(--secondary-color);
+    border-radius: 4px;
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
+/* Ombra morbida per effetto "sospeso" */
+.cover-shadow {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-color);
+    opacity: 0.4;
+    z-index: 1;
+    filter: blur(20px);
+}
+
+/* Card Informazioni */
+.issue-info-card {
+    flex: 1;
+    max-width: 550px;
+    background: white;
+    border: 3px solid var(--secondary-color);
+    border-radius: 8px;
+    /* Arrotondamento richiesto */
+    padding: 40px;
+    box-shadow: 10px 10px 0px var(--secondary-color);
+    position: relative;
+    overflow: hidden;
+    /* Per contenere il mezzotono */
+}
+
+/* Mezzotono Diagonale per la Hero Card */
+.issue-info-card::after {
+    content: "";
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    width: 150px;
+    height: 120%;
+    background-image: radial-gradient(var(--secondary-color) 30%, transparent 30%);
+    background-size: 8px 8px;
+    transform: rotate(-15deg);
+    -webkit-mask-image: linear-gradient(135deg, transparent 40%, black 100%);
+    mask-image: linear-gradient(135deg, transparent 40%, black 100%);
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+.issue-number {
+    font-family: var(--font-mid);
+    color: var(--accent-color);
+    font-weight: 900;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.issue-info-card h3 {
+    font-family: var(--font-titles);
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.issue-info-card p {
+    font-family: var(--font-mid);
+    line-height: 1.6;
+    color: var(--text-dark);
+    margin-bottom: 30px;
+}
+
+/* Pulsanti Industrial */
+.issue-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-solid,
+.btn-outline {
+    padding: 12px 25px;
+    font-family: var(--font-mid);
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    transition: transform 0.1s ease;
+}
+
+.btn-solid {
+    background: var(--secondary-color);
+    color: white;
+    border: 3px solid var(--secondary-color);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--secondary-color);
+    border: 3px solid var(--secondary-color);
+}
+
+/* --- 2. SEZIONE ARCHIVIO (GRIGLIA QUADRATA) --- */
+.zine-archive {
+    padding: 60px 0 100px 0;
+    background-color: rgba(0, 0, 0, 0.02);
+    /* Leggero stacco visivo */
+}
+
+.section-title {
+    text-align: center;
+    font-family: var(--font-titles);
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.inventory-grid {
+    display: grid;
+    /* Manteniamo i tuoi quadrati fissi da 180px */
+    grid-template-columns: repeat(4, 180px);
+    gap: 25px;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+/* Item dell'archivio (Quadrati fissi) */
+.zine-item {
+    width: 180px;
+    height: 180px;
+    background: white;
+    border: 3px solid var(--secondary-color);
+    border-radius: 8px;
+    /* Arrotondamento richiesto */
+    box-shadow: 6px 6px 0px var(--accent-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+}
+
+.zine-mini-label {
+    font-family: var(--font-mid);
+    font-weight: 900;
+    font-size: 0.7rem;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.zine-mini-cover {
+    width: 60px;
+    height: 80px;
+    background: #f0f0f0;
+    border: 2px solid var(--secondary-color);
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.zine-mini-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.zine-links {
+    font-family: var(--font-mid);
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.zine-links a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.zine-links a:hover {
+    text-decoration: underline;
+}
+
+/* --- 3. RESPONSIVE --- */
+@media screen and (max-width: 992px) {
+    .featured-flex {
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .issue-cover-standalone {
+        flex: 0 0 auto;
+        width: 280px;
+        /* Riduciamo l'effetto 3D su tablet/mobile per leggibilità */
+        transform: rotateY(-10deg) rotateX(5deg);
+    }
+
+    .inventory-grid {
+        grid-template-columns: repeat(3, 180px);
+    }
+
+    .issue-actions {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .inventory-grid {
+        grid-template-columns: repeat(2, 180px);
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .inventory-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
+        gap: 15px;
+        padding: 0 15px;
+    }
+
+    .zine-item {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+}
+
+/* --- IL SEPARATORE "LAMA BIANCA" --- */
+.diagonal-divider {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background: white;
+    margin-top: -50px;
+    margin-bottom: -50px;
+    z-index: 10;
+    clip-path: polygon(0 30%,100% 0%,100% 50%,0 80%);
+}
+
+body:has(.secondary-content) .diagonal-divider {
+    display: block;
+}
+
+.diagonal-divider::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    /* Colore della sezione successiva (archivio) */
+
+    /* Il taglio diagonale responsive */
+    clip-path: polygon(0 100%, 100% 100%, 100% 0);
+}
+
+/* --- ADATTAMENTO MOBILE --- */
+@media screen and (max-width: 768px) {
+    .diagonal-divider {
+        height: 60px;
+        margin-top: -30px;
+        margin-bottom: -30px;
+        clip-path: polygon(0 30%,100% 0%,100% 50%,0 80%);
+    }
+}
+
+/* --- SFONDO NEUTRO ARCHIVIO --- */
+.zine-archive {
+    position: relative;
+    padding: 100px 0;
+    /* Aumentato per dare spazio alla diagonale */
+    background-color: var(--primary-color);
+    z-index: 1;
 }
