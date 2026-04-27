@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giochi dell'Oco by Djuseppe</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Orbitron:wght@400..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
@@ -13,91 +13,14 @@
 
 <body>
 
-    <nav class="navbar">
-        <div class="container nav-container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="img/logo-colori.svg" alt="Logo Giochi dell'Oco" id="site-logo">
-                </a>
-            </div>
-
-            <button class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-
-            <ul class="nav-links">
-                <li><a href="pages/eco.html">L'Eco dell'Oco</a></li>
-                <li><a href="pages/giochi.html">Game Design</a></li>
-                <li><a href="pages/progetti.html">Altri Progetti</a></li>
-                <li><a href="pages/about.html">Chi sono?</a></li>
-            </ul>
-        </div>
-    </nav>
-
     <div class="page-main-content">
-        <header class="hero-section">
-            <div class="container">
-                <h1 data-text="GIOCHI DELL'OCO">GIOCHI DELL'OCO</h1>
-                <p class="hero-subtitle">Progetti ludo-creativi di Giuseppe 'Djuseppe' Basile</p>
-            </div>
-        </header>
 
         <main class="main-content">
-            <div class="container">
-                <div class="card-grid">
-
-                    <article class="zine-card">
-                        <a href="pages/giochi.html">
-                            <div class="card-image">
-                                <img src="img\home\sinfonia_etb.png" alt="Giochi" class="zine-img">
-                            </div>
-                            <div class="card-content">
-                                <h3>GAME DESIGN</h3>
-                                <p>Scopri, scarica e prova i giochi che ho creato, tra cui i mitici Sanrémon!</p>
-                                <span class="card-btn">Vedi tutto! →</span>
-                            </div>
-                        </a>
-                    </article>
-
-                    <article class="zine-card featured">
-                        <div class="card-sparks">
-                            <span class="spark s-cyan-1"></span>
-                            <span class="spark s-cyan-2"></span>
-                            <span class="spark s-orange-1"></span>
-                            <span class="spark s-orange-2"></span>
-                        </div>
-                        <div class="card-tag">NUOVO NUMERO</div>
-                        <a href="pages/eco.html">
-                            <div class="card-image">
-                                <img src="img\covers\cover38.jpg" alt="Eco dell'Oco" class="zine-img">
-                            </div>
-                            <div class="card-content">
-                                <h3>L'ECO DELL'OCO</h3>
-                                <p>Leggi la mia fanzine dedicata al mondo nerd e a tutto ciò che mi piace!</p>
-                                <span class="card-btn">Sfoglia i numeri! →</span>
-                            </div>
-                        </a>
-                    </article>
-
-                    <article class="zine-card">
-                        <a href="pages/wip.html">
-                            <div class="card-image">
-                                <img src="img\home\mistery.png" alt="Progetti" class="zine-img">
-                            </div>
-                            <div class="card-content">
-                                <h3>Altri Progetti</h3>
-                                <p>Qui c'è tutto il resto! Sezione in costruzione...</p>
-                                <span class="card-btn">Vedi tutto! →</span>
-                            </div>
-                        </a>
-                    </article>
-
-                </div>
-            </div>
+            <section class="wip-content">
+                <img src="../img/djocowip.png" alt="WIP" class="hero-img">
+                <a href="../index.html" class="btn-solid">TORNA ALLA HOME</a>
+            </section>
         </main>
-
     </div>
 
     <footer class="main-footer">
@@ -174,23 +97,6 @@
         </div>
 
     </footer>
-
-    <script>
-        const menu = document.querySelector('#mobile-menu');
-        const menuLinks = document.querySelector('.nav-links');
-        const body = document.querySelector('body');
-
-        menu.addEventListener('click', function () {
-            menu.classList.toggle('is-active');
-            menuLinks.classList.toggle('active');
-
-            if (menuLinks.classList.contains('active')) {
-                body.style.overflow = 'hidden';
-            } else {
-                body.style.overflow = 'auto';
-            }
-        });
-    </script>
 
 </body>
 

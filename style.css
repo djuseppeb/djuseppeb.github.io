@@ -1428,3 +1428,22 @@ body:has(.secondary-content) .diagonal-divider {
         margin-left: auto; /* Ulteriore sicurezza per spingere a destra */
     }
 }
+
+.wip-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+    min-height: 60vh;
+}
+
+.wip-content .hero-img {
+    max-width: 500px; /* Dimensione controllata */
+    height: auto;
+    margin-bottom: 40px;
+    /* Ombra solida per dare profondità "meccanica" */
+    filter: drop-shadow(4px 4px 10px var(--bg-card));
+    transition: transform 0.3s ease;
+}
